@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  background-color: #F6F9F9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,3 +26,79 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.border-animation-top,
+.border-animation-right,
+.border-animation-bottom,
+.border-animation-left {
+  content: "";
+  position: absolute;
+  background-color: #22b8cf;
+  transition: all 0.3s;
+}
+
+.border-animation-top,
+.border-animation-bottom {
+  width: 0;
+  height: 3px;
+  left: 50%;
+}
+
+.border-animation-right,
+.border-animation-left {
+  width: 3px;
+  height: 0;
+  top: 50%;
+}
+
+.border-animation-top {
+  top: 0;
+}
+
+.border-animation-right {
+  right: 0;
+}
+
+.border-animation-bottom {
+  bottom: 0;
+}
+
+.border-animation-left {
+  left: 0;
+}
+
+.service-title:hover .border-animation-top {
+  width: 100%;
+  left: 0;
+}
+
+.service-title:hover .border-animation-right {
+  height: 100%;
+  top: 0;
+}
+
+.service-title:hover .border-animation-bottom {
+  width: 100%;
+  left: 0;
+}
+
+.service-title:hover .border-animation-left {
+  height: 100%;
+  top: 0;
+}
+.arrow-animation {
+  position: absolute;
+  opacity: 0;
+  transition: all 0.3s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+}
+
+.service-title:hover .arrow-animation {
+  opacity: 1 !important;
+  left: 60%;
+  z-index: 300;
+}
+
+
