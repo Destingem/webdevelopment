@@ -6,143 +6,78 @@ import { useRouter } from "next/router";
 import { motion, useAnimation } from 'framer-motion';
 import { useWindowScroll } from "@mantine/hooks";
 import { useEffect, useState } from "react";
+import MyTimeline from "./MyTimeline";
+import MyPeople from "./MyPeople";
+
 export default function AboutUs() {
+  
   const we = [
     {
-      name: "Pavel Holas",
-      job: "Designer",
+      name: "Ing. Jiří Sedláček",
+      job: "Cyber security",
       image: YourPhoto,
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In rutrum. Duis risus. Aliquam erat volutpat. Suspendisse nisl. Fusce consectetuer risus a nunc. Vivamus porttitor turpis ac leo. Etiam commodo dui eget wisi. Nulla quis diam. Mauris tincidunt sem sed arcu. Nullam dapibus fermentum ipsum. Aliquam id dolor. ",
-      button: { text: "Více o mě", href: "/" },
+      description: "Vystudoval Kybernetickou bezpečnost na VUT v Brně. Při našem vývoji zajištuje bezpečnost našich aplikací",
+      button: { text: "Více o Jiřím", href: "/o-nas" },
     },
     {
-        name: "Pavel Holas",
-        job: "Designer",
+        name: "Tomáš Bauer",
+        job: "Developer",
         image: YourPhoto,
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In rutrum. Duis risus. Aliquam erat volutpat. Suspendisse nisl. Fusce consectetuer risus a nunc. Vivamus porttitor turpis ac leo. Etiam commodo dui eget wisi. Nulla quis diam. Mauris tincidunt sem sed arcu. Nullam dapibus fermentum ipsum. Aliquam id dolor. ",
+        description: "Studuje kybernetickou bezpečnost a podílí se na tvorbě webových stránek",
         button: { text: "Více o mě", href: "/" },
       },
       {
-        name: "Pavel Holas",
-        job: "Designer",
+        name: "Rudolf Trenčanský",
+        job: "Developer",
         image: YourPhoto,
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In rutrum. Duis risus. Aliquam erat volutpat. Suspendisse nisl. Fusce consectetuer risus a nunc. Vivamus porttitor turpis ac leo. Etiam commodo dui eget wisi. Nulla quis diam. Mauris tincidunt sem sed arcu. Nullam dapibus fermentum ipsum. Aliquam id dolor. ",
+        description: "Rudu už od mala baví programování a celkově kreativní práce, do týmu nám přispívá svým nekonvenčním pohledem. V současné době se věnuje studiu Informačních technologií",
         button: { text: "Více o mě", href: "/" },
       },
+      {
+        name: "Štěpán Kala",
+        job: "Developer",
+        image: YourPhoto,
+        description: "Rudu už od mala baví programování a celkově kreativní práce, do týmu nám přispívá svým nekonvenčním pohledem. V současné době se věnuje studiu Informačních technologií",
+        button: { text: "Více o mě", href: "/" },
+      },
+      {
+        name: "Martin Kotlík",
+        job: "Designer",
+        image: YourPhoto,
+        description: "Rudu už od mala baví programování a celkově kreativní práce, do týmu nám přispívá svým nekonvenčním pohledem. V současné době se věnuje studiu Informačních technologií",
+        button: { text: "Více o mě", href: "/" },
+      },
+      
   ];
 
 
   
-const gridVariants = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 5, type: 'spring', stiffness: 50 } },
-};
 
-  const router = useRouter();
-  const [scroll, scrollTo] = useWindowScroll();
-    const { y } = scroll;
-  const [startAnimation, setStartAnimation] = useState(false);
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (y > 200) { // Adjust this value to control when the animation starts
-        console.log(y + "is bigger than 200")
-      setStartAnimation(true);
-    }
-  }, [y]);
-
-  useEffect(() => {
-    if (startAnimation == true) {
-      controls.start('visible');
-    }
-  }, [startAnimation, controls]);
   return (
-    <div style={{ width: '100%'}}>
+    <div style={{ width: '100%', position: "relative"}}>
      
-      <Text color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{  marginBottom: "3rem",  transition: "all 0.3s ease-in-out", }}>
-      O mě
+    <div style={{ width: '100%', display: 'flex', backgroundColor: "#e9f8fa", flexDirection: "column", paddingTop: "3vh"}}>
+   
+    <Text color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{  marginBottom: "3rem",  transition: "all 0.3s ease-in-out", whiteSpace:"nowrap" }}>
+    Jmenuji se Ondřej a jsem webový vývojář.
 </Text>
-    <div style={{ width: '100%', height: '100vh', display: 'flex' }}>
-      <div
-        style={{
-          height: "10vh",
-          width: '100%',
-          backgroundColor: '#cccccc',
-          height: '100%',
-          padding: '0 2vw',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-    
-        <motion.div initial="hidden" animate={controls} variants={gridVariants} >
-          <Grid>
-          {we.map((item) => {
-            const {name, job, description, button, image} = item;
-            return (
-              <Grid.Col span={3}>
-              <Flex
-                style={{ width: "100%", height: "100%" }}
-                justify="center"
-                align="center"
-              >
-                <Card>
-                  <Card.Section>
-                  <Image
-                    src={image}
-                    width={300}
-                    height={300}
-                    alt="Your photo"
-                  />
-                  </Card.Section>
-
-                  <Group
-                    position="apart"
-                    sx={{ marginTop: "1vh", padding: "0 1vw" }}
-                  >
-                    <Text size="xl" weight="bold" color="#4d4d4d">
-                      {name}
-                    </Text>
-                    <Text size="md" weight="bold" color="#4d4d4d">
-                      {job}
-                    </Text>
-                  </Group>
-                  <Card.Section>
-                    <Blockquote color="cyan" sx={{ maxWidth: "25vw" }}>
-                      {description}
-                    </Blockquote>
-                  </Card.Section>
-                  <Card.Section
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                  
-                   <Button
-                      color="blue"
-                      variant="outline"
-                      onClick={() => router.push(button.href)}
-                      sx={{ width: "80%", marginBottom: "2vh" }}
-                    >
-                      {button.text}
-                    </Button>
-                 
-                  </Card.Section>
-                </Card>
-              </Flex>
-              </Grid.Col>
-            );
-          })}
-          </Grid>
-      
-          </motion.div>
-        </div>
-       
+ <Text align="center" size={"xl"} sx={{maxWidth: "50%", textAlign: "left", margin: "0 auto 2vh auto"}} >
+  Jsem web developer, kterého
+baví kybernetická bezpečnost.
+Ve volném čase se vzdělávám
+v KB, programování a dalších
+oborech, sportovně střílím z
+pušky, vedu táborový oddíl a
+upravuji zvuk.
+  </Text>
+<MyTimeline />
+    <MyPeople we={we}/>
       </div>
+      <div class="custom-shape-divider-bottom-1682269177">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" class="shape-fill"></path>
+    </svg>
+</div>
     </div>
   );
 }

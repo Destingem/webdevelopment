@@ -34,7 +34,7 @@ export default function Navbar({motion}) {
       minHeight: "8vh",
       backgroundColor: "transparent",
       justifyContent: "center",
-      zIndex: 1000,
+      zIndex: 1850,
       transition: "all 0.3s ease-in-out",
       
     },
@@ -42,7 +42,7 @@ export default function Navbar({motion}) {
       position: "fixed",
       top: 0,
       width: "100%",
-      zIndex: 1000,
+      zIndex: 1850,
     },
     logoContainer: {
       display: "flex",
@@ -97,13 +97,13 @@ export default function Navbar({motion}) {
         sx={
           !scroll.y < 1
             ? {
-                backgroundColor: theme.colors.cyan[5],
-                borderBottom: "3px solid #545454",
+                backgroundColor: "transparent",
+                borderBottom: "3px  #545454",
               }
-            : { borderBottom: "3px solid transparent" }
+            : { borderBottom: "" }
         }
       >
-        <div style={{ width: "80%" }}>
+        <div style={{ width: "80%", zIndex: "1850" }}>
           <Grid gutter="lg" w={"100%"}>
             <Grid.Col span={6}>
               <div className={classes.logoContainer}>

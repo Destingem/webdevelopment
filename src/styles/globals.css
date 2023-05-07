@@ -26,6 +26,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
 .border-animation-top,
 .border-animation-right,
 .border-animation-bottom,
@@ -100,5 +101,35 @@ body {
   left: 60%;
   z-index: 300;
 }
+.custom-shape-divider-bottom-1682269177 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
 
+.custom-shape-divider-bottom-1682269177 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 152px;
+  transform: rotateY(180deg);
+}
 
+.custom-shape-divider-bottom-1682269177 .shape-fill {
+  fill: #FFFFFF;
+}
+.my-card{
+  background-color: transparent !important;
+}
+.my-card  > div::after{
+  background: transparent !important;
+}
+.timeline-main-wrapper{
+  overflow-y: hidden !important;
+}
+.jjmwTN{
+  background: #22b8cf !important;
+}

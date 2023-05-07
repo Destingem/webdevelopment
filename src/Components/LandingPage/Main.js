@@ -6,24 +6,26 @@ import { motion, useTransform, useViewportScroll } from "framer-motion";
 import Image from "next/image";
 import { useWindowScroll } from "@mantine/hooks";
 export default function Main(){
-
+  const links = [{text: "Kdo jsem?", href: "/services"}, {text: "Co nabízím?", href: "/services"}, {text: "Moje tvorba", href: "/contact"}, {text: "Blog", href: "/contact"}, {text: "Kontakt", href: "/contact"}]
     var theme = useMantineTheme();
     const { scrollY } = useViewportScroll();
     const [scroll, scrollTo] = useWindowScroll();
   // Interpolate the position of the image based on the scroll position
   const x = useTransform(scrollY, [0, 0], ["0%", "0%"]);
   const y = useTransform(scrollY, [0, 200], ["0%", "120%"]);
-const links = [{text: "Kdo jsem?", href: "/services"}, {text: "Co nabízím?", href: "/services"}, {text: "Moje tvorba", href: "/contact"}, {text: "Blog", href: "/contact"}, {text: "Kontakt", href: "/contact"}]
+
     return(
-      <div style={{width: "100%", minHeight: "70vh"}}>
-      <video autoPlay muted loop style={{position: "absolute", width: "20%", height: "50%", objectFit: "cover", zIndex: "1", right: "7%", bottom: "35%", borderRadius: "240px"}} src={"/videos/bckground.mp4"} />
+      <div style={{width: "100%", minHeight: "70vh", display: "block", overflow: "hidden"}}>
+  
           <div style={{backgroundColor: theme.colors.cyan[5], paddingTop: "8vh", display: "flex", paddingLeft: "3vw"}}>
           
             <AnimatedHeader text="Oživ svůj digitální svět s neodolatelným webem." />
-            <div style={{ width: "50%", minHeight: "10%", display: "flex", alignItems: "flex-start", justifyContent: "flex-start", paddingBottom: "5vh", paddingLeft: "4vw", paddingTop: "1vh" }}>
+            <div style={{ width: "50%", minHeight: "10%", display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "5vh", paddingLeft: "4vw", paddingTop: "1vh" }}>
+            <video autoPlay muted loop style={{ width: "70%", height: "90%", objectFit: "cover", zIndex: "1", right: "7%", top: "3%", borderRadius: "240px"}} src={"/videos/bckground.mp4"} />
             <div style={{position: "absolute", zIndex: 150}}>
                 {links.map((link, index) => {
-                    return( <Text sx={{ cursor: "pointer", whiteSpace: "nowrap"}} size="6rem" weight="bold" color="#3e3e3e" onClick={() => scrollTo(link.href)}><Text color="white" size={"sm"} component="span">{index +1}</Text><Text color="white" size={"lg"} component="span">/</Text> {link.text}</Text>)
+                  const [hover, setHover] = useState(false)
+                    return( <Text sx={{ cursor: "pointer", whiteSpace: "nowrap",  transition: "all 0.5s ease-in-out"}} onMouseEnter={()=> {setHover(true)}} onMouseLeave={()=> {setHover(false)}} size={"4vw"} weight="bold" color={hover ? "#fff" :"#3e3e3e" }onClick={() => scrollTo(link.href)}><Text color="white" sx={{ transition: "all 0.5s ease-in-out"}} size={hover ? "2vw" : "sm"} component="span">{index +1}</Text><Text color="white" size={"lg"} component="span">/</Text> {link.text}</Text>)
                 })}
             </div>
             <motion.div style={{ position: "absolute", x, y, transition: "all 0.5s ease-in-out", alignSelf: "flex-end"}}>

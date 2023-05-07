@@ -1,127 +1,131 @@
-import React from "react";
+import { useState } from "react";
+import { Text, createStyles } from "@mantine/core";
+import Polystyrensypany from "../../../public/images/polystyrensypany.png"; // "../../../public"
+import Image from "next/image";
+import Link from "next/link";
+let projects = [
+  { name: "Polystyren sypaný", year: "2022", img: Polystyrensypany, video: "", href: "/portfolio/polystyrensypany" },
+  { name: "Desktop aplikace pro tetovací studio", year: "2023", img: "", video: "", href: "/portfolio/" },
+  { name: "Artilea Counter", year: "2023", img: "", video: "", href: "/portfolio/"},
+  {name: "Eshop Artilea.eu", year: "2023", img: "", video: "", href: "/portfolio/"},
+  {name: "Web Vinarstvibadin.cz", year: "2022", img: "", video: "", href: "/portfolio/"},
+  {name: "Web ITEAD.cz", year: "2021", img: "", video: "", href: "/portfolio/"},
+].reverse().sort((a, b) => b.year - a.year);
 
 
-function Cta38Component() {
+function HoverCard({ project, mouseX, mouseY }) {
+
+
+  const { img, video } = project;
+
+  // You can add conditions to render either photo or video based on the project data
   return (
-    <div className="padding-global">
-      <div className="container-large">
-        <div className="padding-section-medium">
-          <div className="cta38_component">
-            <a
-              data-w-id="0391dce0-6543-5022-8766-7f06443cb808"
-              href="/assembly-rebrand"
-              className="cta38_link-block top-line w-inline-block"
-            >
-              <div className="cta38_link-text-small">2022</div>
-              <h2 className="cta38_link-text">
-                Revitalizing an Industry Icon
-              </h2>
-              <div
-                className="cta38_link-image-wrapper pointer-events-off"
-                style={{ display: "none", opacity: 0 }}
-              >
-                <img
-                  src="https://uploads-ssl.webflow.com/640cef1a90971b757f0551dd/64128dc019545d7b14d5fe20_cover-hover-asm1.gif"
-                  loading="eager"
-                  alt="An animated thumbnail of a dancer dancing in front of a camera with red neon lights behind her giving off a soft red glow throughout the image."
-                  className="cta38_link-image"
-                  style={{
-                    willChange: "transform",
-                    transform:
-                      "translate3d(-50%, 49.99vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-                    transformStyle: "preserve-3d",
-                  }}
-                />
-              </div>
-            </a>
-            <a
-              data-w-id="0391dce0-6543-5022-8766-7f06443cb80f"
-              href="/assembly-social"
-              className="cta38_link-block no-top-line w-inline-block"
-            >
-              <div className="cta38_link-text-small">2022</div>
-              <h3 className="cta38_link-text">
-                Recruiting Talent Through Creative Social
-              </h3>
-              <div
-                className="cta38_link-image-wrapper pointer-events-off"
-                style={{ display: "none", opacity: 0 }}
-              >
-                <img
-                  src="https://uploads-ssl.webflow.com/640cef1a90971b757f0551dd/64129a36d8bb7f5642df6fae_cover-hover-asm3.gif"
-                  loading="eager"
-                  alt="An animated thumbnail featuring a woman facing the camera and slowly beginning to put on a virtual reality headset. The image is tinted with pinkish hues."
-                  className="cta38_link-image"
-                  style={{
-                    willChange: "transform",
-                    transform:
-                      "translate3d(-50%, 49.99vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-                    transformStyle: "preserve-3d",
-                  }}
-                />
-              </div>
-            </a>
-            <a
-              data-w-id="717dd1d2-bf58-30f2-4203-b1708950a17e"
-              href="/assembly-presentations"
-              className="cta38_link-block no-top-line w-inline-block"
-            >
-              <div className="cta38_link-text-small">2022</div>
-              <h3 className="cta          38_link-text">
-            Transforming Virtual Presentations for Engagement
-          </h3>
-          <div
-            className="cta38_link-image-wrapper pointer-events-off"
-            style={{ display: "none", opacity: 0 }}
-          >
-            <img
-              src="https://uploads-ssl.webflow.com/640cef1a90971b757f0551dd/641c7315c6a231f705edf54a_cover-hover-asm2.gif"
-              loading="eager"
-              alt="Animated GIF showing pink lines animated together"
-              className="cta38_link-image"
+    <div
+      style={{
+        position: "fixed",
+        left: mouseX,
+        top: mouseY,
+        backgroundColor: "white",
+        borderRadius: "8px",
+        padding: "8px",
+        boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+        pointerEvents: "none",
+        zIndex: 1000,
+        minWidth: img || video ? "15%" : 0,
+        minHeight: img || video ? "15%" : 0,
+        cursor: "pointer !important"
+      }}
+    >
+      {img && <Image src={img} alt="Project" fill />}
+      {video && <video src={video} alt="Project" />}
+    </div>
+  );
+}
+
+export default function OurProjects() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredIndex, setHoveredIndex] = useState(-1);
+
+  const handleMouseMove = (e) => {
+    setMousePosition({ x: e.clientX + 10, y: e.clientY + 10 });
+  };
+
+
+  const useStyles = createStyles((theme) => ({
+    btn: {
+      backgroundSize: '200% 100%',
+      backgroundPosition: 'right bottom',
+      backgroundColor: 'transparent',
+      transition: 'all 0.3s ease-in-out',
+      '&:hover': {
+        backgroundPosition: 'left bottom',
+        backgroundImage: 'linear-gradient(to right, #e9f8fa 50%, transparent 50%)',
+        transition: 'all 0.3s ease-in-out',
+      },
+    
+    },
+  }));
+  
+   const {classes} = useStyles();
+
+  return (
+    <div style={{ margin: "3vh 0", }}>
+              <Text component="h2" color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
+            Mé projekty
+            </Text>
+           <div style={{width: "100%", minWidth: "70vw", }}>
+        {projects.map((project, index) => {
+          return (
+            <Link
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(-1)}
+              onMouseMove={handleMouseMove}
+              href={project.href}
               style={{
-                willChange: "transform",
-                transform:
-                  "translate3d(-50%, 49.99vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-                transformStyle: "preserve-3d",
+                display: "flex",
+                cursor: "pointer",
+                borderTop: index === 0 ? "3px solid #333" : "",
+                borderBottom: "3px solid #333",
+                gap: "2vw",
               }}
-            />
-          </div>
-        </a>
-        <a
-          data-w-id="0391dce0-6543-5022-8766-7f06443cb816"
-          href="/apple-retail"
-          className="cta38_link-block no-top-line w-inline-block"
-        >
-          <div className="cta38_link-text-small">2018</div>
-          <h3 className="cta38_link-text">
-            Streamlining Apple Retail Presentations
-          </h3>
-          <div
-            className="cta38_link-image-wrapper pointer-events-off"
-            style={{ display: "none", opacity: 0 }}
-          >
-            <img
-              src="https://uploads-ssl.webflow.com/640cef1a90971b757f0551dd/6412976be9e64b0b16059c42_cover-hover-apple2.gif"
-              loading="eager"
-              alt="Animated GIF showing Apple Music album and playlist covers moving a linear way."
-              className="cta38_link-image"
+            >
+               <Text component="h3" color="#333" align="left" size={"2.5rem"} weight={500} sx={{   transition: "all 0.3s ease-in-out",  padding: "2vh 0"}}>
+            {project.year}
+            </Text>
+    <Text component="h3" color="#333" align="left" size={"2.5rem"} weight={500} sx={{   transition: "all 0.3s ease-in-out", width: "100%", padding: "2vh 0"}}>
+            {project.name}
+            </Text>
+            </Link>
+          );
+        })}
+        <Link
+        href="/portfolio"
+            className={classes.btn}
+              onMouseMove={handleMouseMove}
               style={{
-                willChange: "transform",
-                transform:
-                  "translate3d(-50%, 49.99vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-                transformStyle: "preserve-3d",
+                display: "flex",
+                cursor: "pointer",
+                borderTop: "",
+                borderBottom: "3px solid #333",
+                gap: "2vw",
+              
               }}
-            />
-          </div>
-        </a>
-        <div className="cta38_hover-css w-embed">
-       
-        </div>
+            >
+             
+         
+    <Text component="h3" color="#333" align="center" size={"2.5rem"} weight={500} sx={{   transition: "all 0.3s ease-in-out", width: "100%", padding: "2vh 0"}}>
+            Zjistit více
+            </Text>
+            </Link>
+        {hoveredIndex !== -1 && (
+          <HoverCard
+            project={projects[hoveredIndex]}
+            mouseX={mousePosition.x}
+            mouseY={mousePosition.y}
+          />
+        )}
       </div>
     </div>
-  </div>
-</div>
-);
+  );
 }
-export default Cta38Component;

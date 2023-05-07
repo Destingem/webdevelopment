@@ -57,7 +57,7 @@ export default function Services() {
   const [currentHover, setCurrentHover] = useReducer(stateReducer,  "Vyvíjíme ...");
   const router = useRouter();
   return (
-    <div style={{ width: "70%", minHeight: "50vh", padding: "8vh 0 11vh 0" }}>
+    <div style={{ width: "80%", minHeight: "50vh", padding: "8vh 0 11vh 0" }}>
     <Text color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{  marginBottom: "3rem",  transition: "all 0.3s ease-in-out", }}>
   {currentHover}
 </Text>
@@ -106,7 +106,7 @@ export default function Services() {
 </div>
 
                 <Text
-                  size="2rem"
+                  size="1.5vw"
                   component="a"
                   weight={600}
                   color="#808080"
