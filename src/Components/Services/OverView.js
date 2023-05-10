@@ -39,7 +39,7 @@ const arrowAnimationHoverStyle = {
   top: '90%',
   zIndex: 300,
 };
-export default function Overview() {
+export default function Overview({currentHover, setCurrentHover}) {
   let services = [
     {
       key: 1,
@@ -70,30 +70,14 @@ export default function Overview() {
       description: "",
     },
   ];
-  function stateReducer(state, action) {
-    switch (action.payload) {
-      case 1:
-        return 1;
-      case 2:
-        return 2;
-      case 3:
-        return 3 ;
-      case 4:
-        return 4;
-      default:
-        return state;
-    }
-  }
-  
-  const [currentHover, setCurrentHover] = useReducer(stateReducer,  1);
+
   const router = useRouter();
   return (
     <div style={{ width: "80%", minHeight: "50vh", padding: "8vh 0 11vh 0" }}>
       <Grid sx={{ width: "100%" }}>
         {services.map((service) => {
           let { image, name, description, href, key } = service;
-          console.log(currentHover);
-          console.log(key);
+         
 
           return (
             <Grid.Col
@@ -133,13 +117,13 @@ export default function Overview() {
            
 
 <div  style={
-      currentHover === key
+      currentHover.num === key
         ? { ...borderAnimationBottomStyle, ...borderAnimationBottomHoverStyle }
         : borderAnimationBottomStyle
     } ></div>
 
 <div  style={
-      currentHover === key
+      currentHover.num === key
         ? { ...arrowAnimationStyle, ...arrowAnimationHoverStyle }
         : arrowAnimationStyle
     }>
@@ -159,12 +143,10 @@ export default function Overview() {
                     transform: "translate(-50%, -50%)",
                     zIndex: 2,
                     whiteSpace: "nowrap",
-                    opacity: currentHover !== key ? " 1" : " 0",
+                    opacity: currentHover.num !== key ? " 1" : " 0",
                    
                   }}
-                  onClick={() => {
-                    router.push(href);
-                  }}
+                
                 >
                   {service.name}
                 </Text>
@@ -174,8 +156,8 @@ export default function Overview() {
         })}
       </Grid>
     
-    <Text color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{  marginBottom: "3rem",  transition: "all 0.3s ease-in-out", }}>
-  {currentHover}
+    <Text color="#22b8cf" align="left" size={"4vw"} weight={700} sx={{  marginTop: "2vh",  transition: "all 0.3s ease-in-out", }}>
+  {currentHover.text}
 </Text>
     </div>
   );

@@ -48,6 +48,11 @@ export default function Navbar({motion}) {
       display: "flex",
       alignItems: "flex-end",
       gap: theme.spacing.xs,
+      backgroundColor: scroll.y > 1 ? theme.colors.cyan[1]: "transparent",
+      borderRadius: "3px",
+      padding: theme.spacing.md,
+      width: "fit-content",
+     
       
     },
     logo: {
@@ -60,6 +65,10 @@ export default function Navbar({motion}) {
       gap: theme.spacing.xl,
       justifyContent: "flex-end",
       alignItems: "center",
+      backgroundColor: scroll.y > 1 ? theme.colors.cyan[1]: "transparent",
+      borderRadius: "3px",
+      padding: theme.spacing.md,
+      width: "fit-content",
     },
     link: {
       position: "relative",
@@ -88,7 +97,7 @@ export default function Navbar({motion}) {
   }));
 
   const { classes } = useStyles();
-  console.log(scroll);
+ 
   return (
     <div className={classes.wrapper}>
       <Paper
@@ -106,9 +115,9 @@ export default function Navbar({motion}) {
         <div style={{ width: "80%", zIndex: "1850" }}>
           <Grid gutter="lg" w={"100%"}>
             <Grid.Col span={6}>
-              <div className={classes.logoContainer}>
-                <Image src={Logo} width={50} height={50} />
-                <div style={{padding: 0}}>
+              <Link href={"/"} className={classes.logoContainer}>
+                <Image src={Logo} width={50} height={50} style={{}} />
+                <div>
                 <Text size="xl" weight={600}>
                   ndřej
                 </Text>
@@ -116,7 +125,7 @@ export default function Navbar({motion}) {
                   aplatílek
                 </Text>
                 </div>
-              </div>
+              </Link>
             </Grid.Col>
             <Grid.Col
               span={6}
