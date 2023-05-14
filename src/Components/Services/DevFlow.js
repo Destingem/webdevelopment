@@ -53,7 +53,7 @@ export default function DevFlow({mobile}){
     const theme = useMantineTheme();
     return(
         <div style={{ width: "100%", minHeight: "50vh", padding: mobile ? "1vh 5vw" : "8vh 0 0 15vw", display: "flex", flexDirection: "column", gap: "3vh", overflow: "hidden"  }}>
-        <Text component="h2" color="#22b8cf" align="center" size={mobile ? "15vw" : "4vw"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
+        <Text component="h2" color="#22b8cf" align="center" size={mobile ? "15vw" : "4vw"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh", marginRight: mobile ? "" : "15vw" }}>
        Jak probíhá vývoj?
        </Text>
        <div style={{ display: "flex", justifyContent: "space-between" }}>

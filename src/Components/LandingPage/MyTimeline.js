@@ -12,7 +12,9 @@ const MyTimeline = () => {
   const chronoRef = useRef();
   const timelineRef = useRef();
 
-  const { scrollIntoView, targetRef } = useScrollIntoView({ offset: 0 });
+/**
+   const { scrollIntoView, targetRef } = useScrollIntoView({ offset: 0 });
+ */
   const cardStyle = {
     padding: "16px",
     borderRadius: "4px",
@@ -79,15 +81,13 @@ const MyTimeline = () => {
     };
   }, [activeIndex, timelineItems]);
 
-  useEffect(() => {
-    scrollIntoView({ alignment: 'center' });
-  }, [activeIndex]);
+
 
  
 
   return (
     <div
-    ref={targetRef}
+   
       id="my-timeline"
       style={{
         width: '100%',

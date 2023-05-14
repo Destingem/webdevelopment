@@ -1,7 +1,7 @@
 import { Text, Image, useMantineTheme, SimpleGrid, Button, createStyles } from "@mantine/core";
 import FirstScreen from "../../Components/UI/FirstScreen";
 import Overview from "../../Components/Services/OverView";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import WebAplikace from "../../Components/Services/WebAplikace/WebAplikace";
 import DesktopAplikace from "../../Components/Services/DesktopAplikace/DesktopAplikace";
 import Eshopy from "../../Components/Services/Eshopy/Eshopy";
@@ -14,6 +14,7 @@ import { FAQ } from "../../Components/Services/FAQ";
 import CTA from "../../Components/Services/CTA";
 import { useViewportSize } from "@mantine/hooks";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 export default function Sluzby() {
   let useStyles = createStyles((theme) => ({
@@ -38,12 +39,35 @@ export default function Sluzby() {
         return state;
     }
   }
-  
+  const router = useRouter();
   const [currentHover, setCurrentHover] = useReducer(stateReducer,  {num:1, text: "Webové stránky a aplikace"});
   const theme = useMantineTheme();
   const {classes} = useStyles();
   const { height, width } = useViewportSize();
   let mobile = width < 768 ? true : false;
+useEffect(()=> {
+  var selected = 0
+  
+ switch (router.query.sluzba) {
+  case "web":
+    selected = 1;
+    break;
+  case "desktop":
+    selected = 2;
+    break;
+  case "eshop":
+    selected = 3;
+    break;
+  case "template":
+    selected = 4;
+    break;
+ 
+  default:
+    break;
+ }
+  setCurrentHover({payload: selected})
+  console.log(router.query.sluzba);
+}, [router.query.sluzba])
   return (
    <>
   <NextSeo

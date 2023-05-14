@@ -5,8 +5,9 @@ import React, { useEffect, useState } from "react";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import Image from "next/image";
 import { useViewportSize, useWindowScroll } from "@mantine/hooks";
+import Link from "next/link";
 export default function Main(){
-  const links = [{text: "Kdo jsem?", href: "/services"}, {text: "Co nabízím?", href: "/services"}, {text: "Moje tvorba", href: "/contact"}, {text: "Blog", href: "/contact"}, {text: "Kontakt", href: "/contact"}]
+  const links = [{text: "Kdo jsem?", href: "/o-me"}, {text: "Co nabízím?", href: "/sluzby"}, {text: "Moje tvorba", href: "/portfolio"}, {text: "Blog", href: "/blog"}, {text: "Kontakt", href: "/kontakt"}]
     var theme = useMantineTheme();
     const { scrollY } = useViewportScroll();
     const [scroll, scrollTo] = useWindowScroll();
@@ -22,14 +23,14 @@ export default function Main(){
           
             <AnimatedHeader text="Oživ svůj digitální svět s neodolatelným webem." mobile={mobile} />
             <div style={{ width: "50%", minHeight: "10%", display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "5vh", paddingLeft: "4vw", paddingTop: "1vh" }}>
-           {!mobile &&  <video autoPlay muted loop style={{ width: "70%", height: "90%", objectFit: "cover", zIndex: "1", right: "7%", top: "3%", borderRadius: "240px"}} src={"/videos/bckground.mp4"} />}
+           {!mobile &&  <video autoPlay muted loop style={{ width: "70%", height: "90%", objectFit: "cover", zIndex: "1", right: "7%", top: "3%", borderRadius: "240px"}} src={"/videos/video4.mp4"} />}
             <div style={{position: "absolute", zIndex: 150}}>
                 {links.map((link, index) => {
                   const [hover, setHover] = useState(false)
                   if(mobile){
                     return null
                   }
-                    return( <Text component="h2" sx={{ cursor: "pointer", whiteSpace: "nowrap",  transition: "all 0.5s ease-in-out"}} onMouseEnter={()=> {setHover(true)}} onMouseLeave={()=> {setHover(false)}} size={"4vw"} weight="bold" color={hover ? "#fff" :"#3e3e3e" }onClick={() => scrollTo(link.href)}><Text color="white" sx={{ transition: "all 0.5s ease-in-out"}} size={hover ? "2vw" : "sm"} component="span">{index +1}</Text><Text color="white" size={"lg"} component="span">/</Text> {link.text}</Text>)
+                    return( <Link href={link.href}><Text component="h2" sx={{ cursor: "pointer", whiteSpace: "nowrap",  transition: "all 0.5s ease-in-out"}} onMouseEnter={()=> {setHover(true)}} onMouseLeave={()=> {setHover(false)}} size={"4vw"} weight="bold" color={hover ? "#fff" :"#d3f1f5" }><Text color="white" sx={{ transition: "all 0.5s ease-in-out"}} size={hover ? "2vw" : "sm"} component="span">{index +1}</Text><Text color="white" size={"lg"} component="span">/</Text> {link.text}</Text></Link>)
                 })}
             </div>
             

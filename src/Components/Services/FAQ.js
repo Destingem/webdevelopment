@@ -29,7 +29,7 @@ export function FAQ({mobile}) {
   const { classes } = useStyles();
   const theme = useMantineTheme()
   return (
-    <Container size={"95%"} className={classes.wrapper}>
+    <Container size={mobile ? "95%" : "60%"} className={classes.wrapper}>
         <Text component="h2" color="#22b8cf" align="center" size={mobile ? "10vw" : "4vw"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
         Často kladené dotazy (FAQ)
             </Text>
