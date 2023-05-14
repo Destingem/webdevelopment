@@ -2,7 +2,7 @@ import Cichnova from "../../../public/image/timeline/cichnova.jpg";
 import Unicorn from "../../../public/image/timeline/unicorn.jpg";
 import Edx from "../../../public/image/timeline/edx.png";
 import SixS from "../../../public/image/timeline/6s.png";
-import WebDev from "../../../public/image/timeline/WebDev.webp";
+import WebDev from "../../../public/image/timeline/ccna.png";
 import Ccna from "../../../public/image/timeline/ccna.png";
 import CCna2 from "../../../public/image/timeline/ccna2.png";
 import NextjsCourse from "../../../public/image/timeline/nextjs.png";
