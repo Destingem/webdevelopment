@@ -10,7 +10,7 @@ import { NextSeo } from "next-seo";
 export default function Blog() {
   const posts = [
     {
-      img: "/images/gradient.webp",
+      img: "/image/gradient.webp",
       title: "Spuštění nového webu",
       description:
         "Dnes jsem spustil svůj nový web, který je postavený na Next.js a Mantine.",
@@ -18,7 +18,7 @@ export default function Blog() {
       date: "středa, 14. dubna 2021",
     },
     {
-      img: "/images/polystyrensypany.png",
+      img: "/image/polystyrensypany.png",
       title: "Spuštění nového webu",
       description:
         "Dnes jsem spustil svůj nový web, který je postavený na Next.js a Mantine.",

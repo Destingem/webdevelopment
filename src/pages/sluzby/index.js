@@ -77,7 +77,7 @@ export default function Sluzby() {
         </Text>
         <div style={{ padding: "5vh 5vw", marginLeft: "20vw" }}>
           <Image
-            src="/images/website.svg"
+            src="/image/website.svg"
             sx={{
               marginLeft: "-20vw",
               marginBottom: "-20vh",
@@ -85,7 +85,7 @@ export default function Sluzby() {
             }}
           />
           <Image
-            src="/images/shop.svg"
+            src="/image/shop.svg"
             fill
             sx={{ backgroundColor: theme.colors.dark[2], zIndex: 20 }}
           />

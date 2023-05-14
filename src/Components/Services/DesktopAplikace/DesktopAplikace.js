@@ -99,7 +99,7 @@ export default function DesktopAplikace({mobile}) {
             které přesně odpovídá vašim potřebám.
           </Text>
         </div>
-        <Image src="/images/innovative.svg" sx={{ maxWidth: mobile ? "80%" : "30%", margin: mobile ? "2vh auto" : "0" }} />
+        <Image src="/image/innovative.svg" sx={{ maxWidth: mobile ? "80%" : "30%", margin: mobile ? "2vh auto" : "0" }} />
       </div>
       <Grid>
         {webServices.map((service) => {
@@ -152,7 +152,7 @@ export default function DesktopAplikace({mobile}) {
         })}
       </Grid>
       {mobile ?
-      <Card sx={{backgroundColor: theme.colors.cyan[0], padding: "1vh 2vw !important", display: "flex", flexDirection: "column" ,justifyContent: "center", alignItems: "center", backgroundImage: "url('/images/topography.svg') ", gap: "2vh"}}>
+      <Card sx={{backgroundColor: theme.colors.cyan[0], padding: "1vh 2vw !important", display: "flex", flexDirection: "column" ,justifyContent: "center", alignItems: "center", backgroundImage: "url('/image/topography.svg') ", gap: "2vh"}}>
         <Text  sx={{margin: "2vh auto 0 auto", maxWidth: "95%"}} weight={500} component="h3" size={"8vw"}>Získejte aplikaci vám ušitou na míru</Text>
         <Text   sx={{margin: "0 auto", maxWidth: "95%"}}  size={"4vw"} > Začněte svůj úspěch online! Kontaktujte mě ještě dnes a společně
             vytvoříme aplikaci, která vás odliší od
@@ -161,7 +161,7 @@ export default function DesktopAplikace({mobile}) {
 <Link href="/kontakt" style={{width: "100%"}}><Button  fullWidth sx={{backgroundColor: theme.colors.blue[4] + " !important", ":hover": {backgroundColor: theme.colors.blue[8] + " !important"}, width: "100%" }} size="md" color="blue">Jdu do toho</Button></Link>
       </Card>
      :
-        <Card sx={{backgroundColor: theme.colors.cyan[0], padding: "5vh 2vw !important", display: "flex", justifyContent: "space-between", alignItems: "center", backgroundImage: "url('/images/topography.svg') ",}}>
+        <Card sx={{backgroundColor: theme.colors.cyan[0], padding: "5vh 2vw !important", display: "flex", justifyContent: "space-between", alignItems: "center", backgroundImage: "url('/image/topography.svg') ",}}>
       <div>  <Text weight={500} component="h3" size={"2vw"}>Získejte ideální aplikaci vám ušitou na míru</Text>
         <Text sx={{maxWidth: "70%"}} size={"1vw"} > Začněte svůj úspěch online! Kontaktujte mě ještě dnes a společně
             vytvoříme aplikaci, která vás odliší od

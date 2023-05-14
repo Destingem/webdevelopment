@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
     display: 'block',
     position: 'static',
     overflow: 'visible',
-    backgroundImage: "url(/images/gradient.webp)",
+    backgroundImage: "url(/image/gradient.webp)",
     width: '100%',
   
   },

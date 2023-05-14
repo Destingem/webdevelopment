@@ -1,11 +1,11 @@
 import { Container, Grid, Paper, Text } from "@mantine/core";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import WebPhoto from "../../../public/images/webDevelopment.png";
-import WebDevelopment from "../../../public/images/websiteDevelopment.png";
-import DesktopDevelopment from "../../../public/images/desktopDevelopment.png";
-import Prototyping from "../../../public/images/prototyping.png";
-import Blockchainari from "../../../public/images/blockchainari.png";
+import WebPhoto from "../../../public/image/webDevelopment.png";
+import WebDevelopment from "../../../public/image/websiteDevelopment.png";
+import DesktopDevelopment from "../../../public/image/desktopDevelopment.png";
+import Prototyping from "../../../public/image/prototyping.png";
+import Blockchainari from "../../../public/image/blockchainari.png";
 import { MdArrowForward } from "react-icons/md";
 import { SlArrowDown } from "react-icons/sl";
 import { useReducer, useState } from "react";

@@ -1,6 +1,6 @@
 import { Blockquote, Button, Card, Flex, Grid, Group, SimpleGrid, Text } from "@mantine/core";
 import Image from "next/image";
-import YourPhoto from "../../../public/images/profile.jpg"; // Replace with the correct path to your photo
+import YourPhoto from "../../../public/image/profile.jpg"; // Replace with the correct path to your photo
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion, useAnimation } from 'framer-motion';

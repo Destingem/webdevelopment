@@ -1,12 +1,12 @@
-import Cichnova from "../../../public/images/timeline/cichnova.jpg";
-import Unicorn from "../../../public/images/timeline/unicorn.jpg";
-import Edx from "../../../public/images/timeline/edx.png";
-import SixS from "../../../public/images/timeline/6s.png";
-import WebDev from "../../../public/images/timeline/WebDev.webp";
-import Ccna from "../../../public/images/timeline/ccna.png";
-import CCna2 from "../../../public/images/timeline/ccna2.png";
-import NextjsCourse from "../../../public/images/timeline/nextjs.png";
-import Entreprenurship from "../../../public/images/timeline/entreprenurship.png";
+import Cichnova from "../../../public/image/timeline/cichnova.jpg";
+import Unicorn from "../../../public/image/timeline/unicorn.jpg";
+import Edx from "../../../public/image/timeline/edx.png";
+import SixS from "../../../public/image/timeline/6s.png";
+import WebDev from "../../../public/image/timeline/WebDev.webp";
+import Ccna from "../../../public/image/timeline/ccna.png";
+import CCna2 from "../../../public/image/timeline/ccna2.png";
+import NextjsCourse from "../../../public/image/timeline/nextjs.png";
+import Entreprenurship from "../../../public/image/timeline/entreprenurship.png";
 const timelineItems = [
     {
       id: "1",

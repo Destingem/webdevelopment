@@ -17,7 +17,7 @@ import {
 import Image from "next/image";
 import { useDisclosure, useWindowScroll } from "@mantine/hooks";
 import ItemMobile from "./ItemMobile";
-import Logo from "../../../public/images/logo.png";
+import Logo from "../../../public/image/logo.png";
 import { useRouter } from "next/router";
 
 

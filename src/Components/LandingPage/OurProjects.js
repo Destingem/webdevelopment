@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Text, createStyles } from "@mantine/core";
-import Polystyrensypany from "../../../public/images/polystyrensypany.png"; // "../../../public"
+import Polystyrensypany from "../../../public/image/polystyrensypany.png"; // "../../../public"
 import Image from "next/image";
 import Link from "next/link";
 import { useViewportSize } from "@mantine/hooks";

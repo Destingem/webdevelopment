@@ -1,5 +1,5 @@
 import { createStyles, Text, Title, TextInput, Button, Image, rem, Paper, Card, Space, useMantineTheme } from '@mantine/core';
-import image from "../../../public/images/websiteDevelopment.png";
+import image from "../../../public/image/websiteDevelopment.png";
 import Link from 'next/link';
 import {   MdOutlineKeyboardArrowRight } from "react-icons/md";
 

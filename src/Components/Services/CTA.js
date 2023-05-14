@@ -90,7 +90,7 @@ export default function CTA() {
           <Button className={classes.control}>Jdu do toho!</Button>
         </div>
       </div>
-      <Image src={"/images/complete.svg"} className={classes.image} />
+      <Image src={"/image/complete.svg"} className={classes.image} />
     </div>
   );
 }

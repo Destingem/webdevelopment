@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { useViewportSize, useWindowScroll } from "@mantine/hooks";
 import Image from "next/image";
-import Logo from "../../../public/images/logo.png";
+import Logo from "../../../public/image/logo.png";
 import NavBarMobile from "./MobileNavbar";
 
 export default function Navbar({motion}) {
