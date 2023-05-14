@@ -39,7 +39,7 @@ const arrowAnimationHoverStyle = {
   top: '90%',
   zIndex: 300,
 };
-export default function Overview({currentHover, setCurrentHover}) {
+export default function Overview({currentHover, setCurrentHover, mobile}) {
   let services = [
     {
       key: 1,
@@ -73,8 +73,8 @@ export default function Overview({currentHover, setCurrentHover}) {
 
   const router = useRouter();
   return (
-    <div style={{ width: "80%", minHeight: "50vh", padding: "8vh 0 11vh 0" }}>
-      <Grid sx={{ width: "100%" }}>
+    <div style={{ width: mobile ? "95%" :"80%", minHeight: "50vh", padding: "8vh 0 11vh 0", margin: "0 auto" }}>
+      <Grid sx={{ width: "100%", margin: "0 auto" }}>
         {services.map((service) => {
           let { image, name, description, href, key } = service;
          
@@ -82,7 +82,7 @@ export default function Overview({currentHover, setCurrentHover}) {
           return (
             <Grid.Col
   className="service-title"
-  span={3}
+  span={mobile ? 6 : 3}
   sx={{ textAlign: "center", borderRadius: "3px", cursor: "pointer" }}
   onMouseEnter={() => setCurrentHover({ payload: key })}
 
@@ -97,9 +97,7 @@ export default function Overview({currentHover, setCurrentHover}) {
                  
                   transition: "borderBottom 0.3s ease-in-out",
                 }}
-                onClick={() => {
-                  router.push(href);
-                }}
+               
               >
                 <Image
                   src={image}
@@ -127,22 +125,22 @@ export default function Overview({currentHover, setCurrentHover}) {
         ? { ...arrowAnimationStyle, ...arrowAnimationHoverStyle }
         : arrowAnimationStyle
     }>
-  <SlArrowDown size={96} color="#22b8cf" />
+  <SlArrowDown size={mobile ? 48 : 96} color="#22b8cf" />
 </div>
 
                 <Text
-                  size="1.5vw"
+                  size={mobile ? "5vw" :"1.5vw"}
                   component="a"
                   weight={600}
                   color="#808080"
                   sx={{
                     transition: "all 0.3s ease-in-out",
                     position: "absolute",
-                    top: "90%",
+                    top: "100%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
                     zIndex: 2,
-                    whiteSpace: "nowrap",
+                    whiteSpace: mobile ? "normal" : "nowrap",
                     opacity: currentHover.num !== key ? " 1" : " 0",
                    
                   }}
@@ -156,7 +154,7 @@ export default function Overview({currentHover, setCurrentHover}) {
         })}
       </Grid>
     
-    <Text color="#22b8cf" align="left" size={"4vw"} weight={700} sx={{  marginTop: "2vh",  transition: "all 0.3s ease-in-out", }}>
+    <Text component="h2"  color="#22b8cf" align={mobile ? "center" : "left"} size={mobile ? "10vw" : "4vw"} weight={700} sx={{  marginTop: "2vh",  transition: "all 0.3s ease-in-out", }}>
   {currentHover.text}
 </Text>
     </div>

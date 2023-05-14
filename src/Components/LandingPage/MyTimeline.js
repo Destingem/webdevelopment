@@ -4,8 +4,10 @@ import { Chrono } from 'react-chrono';
 
 import  timelineItems  from './timelineItem';
 import Image from 'next/image';
-import { useScrollIntoView } from '@mantine/hooks';
+import { useScrollIntoView, useViewportSize } from '@mantine/hooks';
 const MyTimeline = () => {
+  const { height, width } = useViewportSize();
+  let mobile = width < 768 ? true : false;
   const [activeIndex, setActiveIndex] = useState(0);
   const chronoRef = useRef();
   const timelineRef = useRef();
@@ -23,9 +25,9 @@ const MyTimeline = () => {
 
   const CustomCard = ({ id, cardTitle, cardSubtitle, imageSrc }) => {
     return (
-      <Card id={id} style={cardStyle} padding="md" shadow="xs" >
+      <Card id={id} style={cardStyle} padding={mobile ? "xs" : "md"} shadow="xs" >
         
-          <Card.Section style={{ marginRight: '20px', position: "relative", maxWidth: "40%", minHeight: "15vh" }}>
+          <Card.Section style={{ marginRight: '20px', position: "relative", maxWidth: mobile ? "100%" : "40%", minHeight: "15vh" }}>
             <Image
               src={imageSrc}
               alt="Custom Card"

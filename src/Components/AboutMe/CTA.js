@@ -9,8 +9,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     padding: `calc(${theme.spacing.xl} * 2)`,
     borderRadius: theme.radius.md,
-    maxHeight: "50vh",
-    maxWidth: "80%",
+   
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     border: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[3]
@@ -45,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: theme.colors.cyan[6],
-    fontSize: "2vw",
+    
     lineHeight: 1,
     marginBottom: theme.spacing.md,
   },
@@ -72,14 +71,15 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function CTA() {
+export default function CTA({mobile}) {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} style={{ maxHeight: mobile ? "100vh" : "50vh",
+    maxWidth: mobile ? "100%" : "80%",}}>
       <div className={classes.body}>
-        <Title className={classes.title}>Tak teď už mě znáte</Title>
-        <Text fw={500} fz="lg" mb={5}>
+        <Title component='h2' className={classes.title} size={mobile ? "8vw" : "2vw"}>Tak teď už mě znáte</Title>
+        <Text component='p' fw={500} fz="lg" mb={5} size={mobile ? "4vw" : "md"}>
           Pokud se mnou chcete vytvořit svůj web či aplikaci, mrkněte se na moje služby či mě rovnou kontaktujte.
         </Text>
        
@@ -88,17 +88,17 @@ export default function CTA() {
         <Card sx={{transition: "all 0.3s ease-in-out",backgroundColor: "rgb(233, 248, 250)", display: "flex", gap: "1vw", ":hover": {
             backgroundColor: theme.colors.cyan[3],
         }}}>
-        <Card.Section sx={{maxWidth: "10%"}}>
+        <Card.Section sx={{maxWidth: mobile ? "30%" : "10%", display: "flex", alignItems: "center", justifyContent: "center", marginRight: mobile ? "2vw" : "0"}}>
             <Image src={image.src} fit='fill'/>
         </Card.Section>
           <div style={{display: "flex", flexDirection: "column"}}>
-          <Text size={"1.75vw"} color='#22b8cf' weight={600}>Služby</Text>
-            <Text> Co pro vás mohu vytvořit? Jak probíhá vývoj? Od definice požadavků až po deployment, to se dozvíte zde.</Text>
+          <Text component='h3' size={mobile ? "8vw" : "1.75vw"} color='#22b8cf' weight={600}>Služby</Text>
+            <Text component='p'> Co pro vás mohu vytvořit? Jak probíhá vývoj? Od definice požadavků až po deployment, to se dozvíte zde.</Text>
           </div>
-          <Card.Section sx={{marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center"}}>
+      {!mobile &&     <Card.Section sx={{marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center"}}>
           <MdOutlineKeyboardArrowRight style={{ fontSize: "5rem", marginTop: "-1vh",
           color: "#d2d2d2",}} />
-          </Card.Section>
+          </Card.Section>}
         </Card>
     </Link>
     <Space h="lg"/>
@@ -106,22 +106,22 @@ export default function CTA() {
         <Card sx={{transition: "all 0.3s ease-in-out",backgroundColor: theme.colors.teal[0], display: "flex", gap: "1vw", ":hover": {
             backgroundColor: theme.colors.teal[3],
         }}}>
-        <Card.Section sx={{maxWidth: "10%"}}>
+        <Card.Section sx={{maxWidth: mobile ? "30%" : "10%", display: "flex", alignItems: "center", justifyContent: "center", marginRight: "2vw"}}>
             <Image src={image.src} fit='fill'/>
         </Card.Section>
           <div style={{display: "flex", flexDirection: "column"}}>
-          <Text size={"1.75vw"} color={theme.colors.teal[5]} weight={600}>Kontakt</Text>
-            <Text>Pokud už víte co chtete, můžete mi rovnou napsat, či vyplnit formulář.</Text>
+          <Text component='h3' size={mobile ? "8vw" : "1.75vw"} color={theme.colors.teal[5]} weight={600}>Kontakt</Text>
+            <Text component='p'>Pokud už víte co chtete, můžete mi rovnou napsat, či vyplnit formulář.</Text>
           </div>
-          <Card.Section sx={{marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center"}}>
+         {!mobile &&  <Card.Section sx={{marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center"}}>
           <MdOutlineKeyboardArrowRight style={{ fontSize: "5rem", marginTop: "-1vh",
           color: "#d2d2d2",}} />
-          </Card.Section>
+          </Card.Section>}
         </Card>
     </Link>
     
       </div>
-      <Image src={image.src} className={classes.image} />
+      <Image src={image.src} className={classes.image} sx={{maxWidth: mobile ? "50% !important" : "30%"}} />
     </div>
   );
 }

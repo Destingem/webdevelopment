@@ -4,7 +4,7 @@ import { BiTestTube } from "react-icons/bi";
 import { MdMonitorHeart, MdSecurity, MdSupport } from "react-icons/md";
 import Info from "./Info";
 import { FeatureListItem } from "./WhyUs";
-export default function Security(){
+export default function Security({mobile}){
 const theme = useMantineTheme();
     return(
         <Card
@@ -14,10 +14,14 @@ const theme = useMantineTheme();
           display: "flex",
           minHeight: "20vh",
           gap: "2vw",
+          flexDirection: mobile ? "column" : "row",
+maxWidth: mobile ? "90vw" : "",
+margin: mobile ? "0 auto" : "",
+
         }}
       >
         <Text
-          size={"6vw"}
+          size={"12vw"}
           sx={{ color: theme.colors.blue[2], display: "flex", margin: "auto" }}
         >
           1
@@ -25,14 +29,15 @@ const theme = useMantineTheme();
         <div style={{}}>
           <Text
             weight={700}
-            size={"2vw"}
+            align={mobile ? "center" : "left"}
+            size={mobile ?  "10vw" : "2vw"}
             sx={{
               color: theme.colors.blue[6],
             }}
           >
             Bezpečnost
           </Text>
-          <Text size={"lg"}>
+          <Text size={mobile ? "md" : "lg"}>
             Já i moji partneři máme zkušnosti s Kybernetickou bezpečností. Je
             pro nás důležité myslet na zabezpečení již při tvorbě aplikací,
             protože preventivní přístup se vyplácí a náklady na rešení
@@ -44,7 +49,7 @@ const theme = useMantineTheme();
             dat zákazníků. Pakliže vaše webové stránky slouží jako váš významný
             obchodní kanál, kybernetické hrozby mohou představovat velké riziko pro vás i vaše zákazníky.
           </Text>
-          <Text sx={{padding: "2vh 0"}} size={"1.25vw"} weight={500} color={theme.colors.blue[7]}>Jak přistupujeme ke kybernetickým hrozbám?</Text>
+          <Text sx={{padding: "2vh 0"}} size={mobile ? "6vw" : "1.25vw"} weight={500} color={theme.colors.blue[7]}>Jak přistupujeme ke kybernetickým hrozbám?</Text>
           <List sx={{}} spacing={"xl"} type="ordered" icon= {<ThemeIcon
                               size={32}
                               radius="xl"

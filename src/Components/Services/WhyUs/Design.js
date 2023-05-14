@@ -4,20 +4,24 @@ import { BiTestTube } from "react-icons/bi";
 import { MdMonitorHeart, MdSecurity, MdSupport } from "react-icons/md";
 import Info from "./Info";
 import { FeatureListItem } from "./WhyUs";
-export default function Design() {
+export default function Design({mobile}) {
   const theme = useMantineTheme();
   return (
     <Card
-      sx={{
-        backgroundColor: theme.colors.violet[0],
-        width: "100%",
-        display: "flex",
-        minHeight: "20vh",
-        gap: "2vw",
-      }}
+    sx={{
+          backgroundColor: theme.colors.violet[0],
+          width: "100%",
+          display: "flex",
+          minHeight: "20vh",
+          gap: "2vw",
+          flexDirection: mobile ? "column" : "row",
+maxWidth: mobile ? "90vw" : "",
+margin: mobile ? "0 auto" : "",
+
+        }}
     >
       <Text
-        size={"6vw"}
+         size={"12vw"}
         sx={{ color: theme.colors.violet[2], display: "flex", margin: "auto" }}
       >
         2
@@ -25,14 +29,15 @@ export default function Design() {
       <div style={{}}>
         <Text
           weight={700}
-          size={"2vw"}
+          align={mobile ? "center" : "left"}
+          size={mobile ?  "10vw" : "2vw"}
           sx={{
             color: theme.colors.violet[6],
           }}
         >
           Design
         </Text>
-        <Text size={"lg"}>
+        <Text  size={mobile ? "md" : "lg"}>
           Každý náš web na zakázku je unikátní. Vytvoříme pro vás design, který
           bude odpovídat vašim potřebám a přání. Vždy se snažíme vytvořit
           design, který je moderní, přehledný a přitom jednoduchý. Proto je také
@@ -49,36 +54,25 @@ export default function Design() {
           který bude odpovítat vaší brand identitě, s funkcemi co potřebujete a
           který bude optimalizovaný po všech stránkách zvolte vývoj webu na
           zakázku s námi či jiným vývojářem.
-          {/*
-            Já i moji partneři máme zkušnosti s Kybernetickou bezpečností. Je
-            pro nás důležité myslet na zabezpečení již při tvorbě aplikací,
-            protože preventivní přístup se vyplácí a náklady na rešení
-            kybernetického incidentu jsou zpravidla vysoké, nejen po finanční
-            stránce. Přinejlepším musíte počítat s nutností okamžité opravy
-            nastavení či kódu, v nejhorším scénáři útočník převezme kontrolu nad
-            vašim webem či eshopem a následně může způsobit přímou finanční
-            ztrátu, zneprovoznění webu, či získání iterních informací - např.
-            dat zákazníků. Pakliže vaše webové stránky slouží jako váš významný
-            obchodní kanál, kybernetické hrozby mohou představovat velké riziko pro vás i vaše zákazníky.
-           */}
+         
         </Text>
         <Text
           sx={{ padding: "2vh 0" }}
-          size={"1.25vw"}
+          size={mobile ? "6vw" : "1.25vw"}
           weight={500}
           color={theme.colors.violet[7]}
         >
           Průběh tvorby designu
         </Text>
         <List
-          sx={{}}
-          spacing={"xl"}
-          type="ordered"
-          icon={
-            <ThemeIcon size={32} radius="xl" color={theme.colors.violet[6]}>
-              <MdSecurity />
-            </ThemeIcon>
-          }
+         sx={{}} spacing={"xl"} type="ordered" icon= {<ThemeIcon
+                              size={32}
+                              radius="xl"
+                              color={theme.colors.blue[6]}
+                              >
+                              
+                               <MdSecurity />
+                              </ThemeIcon>}
         >
           <FeatureListItem
             color={"violet"}

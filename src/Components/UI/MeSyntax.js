@@ -12,14 +12,7 @@ const CodeSnippet = () => {
     this.skills = skills;
   }
 
-  displayBio() {
-    console.log(\`Jméno: \${this.name}\`);
-    console.log(\`Věk: \${this.age} let\`);
-    console.log(\`IČ: \${this.ic}\`);
-    console.log(\`Adresa: \${this.address}\`);
-    console.log("Skills:");
-    this.skills.forEach((skill) => console.log(\`- \${skill}\`));
-  }
+
 }
 
 const ondrej = new Developer(
@@ -44,7 +37,7 @@ ondrej.displayBio();`;
  
 
   return (
-    <SyntaxHighlighter language="javascript" style={solarizedDark}>
+    <SyntaxHighlighter showLineNumbers language="javascript" style={solarizedDark}>
       {codeString}
     </SyntaxHighlighter>
   );

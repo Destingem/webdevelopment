@@ -105,16 +105,16 @@ export default function SkolaACertifikace(){
 
     return(
         <div style={{width: "80%"}}>
-        <Divider size="sm" color="#000"  label={<Text size={"xl"} >Vzdělání</Text>} />
+        <Divider size="sm" color="#000"  label={<Text component='h2' size={"xl"} >Vzdělání</Text>} />
         <div style={{display: "flex", flexDirection: "column", gap: "5vh", marginTop: "5vh"}}>
         {skoly.map(({name, date, description, img})=> {
   
   return(
     <div style={{display: "flex"}}>
     <div>
-    <Text size={"xl"} weight={700}>{name}</Text>
-      <Text size={"md"} weight={400}>{date}</Text>
-      <Text size={"sm"} weight={400}>{description}</Text>
+    <Text component="h3" size={"xl"} weight={700}>{name}</Text>
+      <Text component="p" size={"md"} weight={400}>{date}</Text>
+      <Text component="p"  size={"sm"} weight={400}>{description}</Text>
     </div>
       <Image />
     </div>
@@ -129,12 +129,12 @@ export default function SkolaACertifikace(){
   return(
     <Grid.Col span={6} style={{display: "flex"}}>
     <div>
-    <Text size={"xl"} weight={700}>{nazev}</Text>
+    <Text component="h3" size={"xl"} weight={700}>{nazev}</Text>
       <div>
-      <Text size={"md"} weight={400}>{vydano}</Text>
-      <Text size={"md"} weight={400}>{organizace}</Text>
+      <Text component="p"  size={"md"} weight={400}>{vydano}</Text>
+      <Text component="p" size={"md"} weight={400}>{organizace}</Text>
       </div>
-      <Text size={"sm"} weight={400}>{description}</Text>
+      <Text component="p" size={"sm"} weight={400}>{description}</Text>
     </div>
       <Image />
     </Grid.Col>
@@ -149,8 +149,8 @@ export default function SkolaACertifikace(){
   return(
     <div style={{display: "flex"}}>
     <div>
-    <Text size={"xl"} weight={700}>{name}</Text>
-      <Text size={"md"} weight={400}>{label}</Text>
+    <Text component="h3"  size={"xl"} weight={700}>{name}</Text>
+      <Text component="p"  size={"md"} weight={400}>{label}</Text>
     </div>
       <Image />
     </div>

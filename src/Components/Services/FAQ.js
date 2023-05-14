@@ -25,14 +25,14 @@ const useStyles = createStyles((theme) => ({
 const placeholder =
   "It can’t help but hear a pin drop from over half a mile away, so it lives deep in the mountains where there aren’t many people or Pokémon.It was born from sludge on the ocean floor. In a sterile environment, the germs within its body can’t multiply, and it dies.It has no eyeballs, so it can’t see. It checks its surroundings via the ultrasonic waves it emits from its mouth.";
 
-export function FAQ() {
+export function FAQ({mobile}) {
   const { classes } = useStyles();
   const theme = useMantineTheme()
   return (
-    <Container size={"75%"} className={classes.wrapper}>
-      <Text weight={600} align="center" size="3vw" color={theme.colors.cyan[7]} sx={{marginBottom: "2vh"}}>
+    <Container size={"95%"} className={classes.wrapper}>
+        <Text component="h2" color="#22b8cf" align="center" size={mobile ? "10vw" : "4vw"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
         Často kladené dotazy (FAQ)
-      </Text>
+            </Text>
 
       <Accordion variant="separated">
         <Accordion.Item className={classes.item} value="reset-password">

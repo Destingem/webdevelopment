@@ -1,4 +1,4 @@
-import { Grid, Highlight, List, Mark, Text, ThemeIcon } from "@mantine/core";
+import { Grid, Highlight, List, Mark, Text, ThemeIcon, useMantineTheme } from "@mantine/core";
 import {SiAdobeillustrator, SiAdobephotoshop, SiApache, SiElectron, SiKalilinux, SiMongodb, SiNextdotjs, SiNginx, SiPandas, SiReact, SiSqlite, SiSurrealdb, SiTensorflow} from "react-icons/si"
 import {TbBrandMantine} from "react-icons/tb"
 import {SiStrapi} from "react-icons/si"
@@ -69,20 +69,21 @@ let tools = [
     ],
   },
 ];
-export default function Tools() {
+export default function Tools({mobile}) {
+  const theme = useMantineTheme();
   return (
-    <div style={{ width: "80%" }}>
-      <Text color="#22b8cf" align="left" size={"4rem"} weight={700} >
+    <div style={{ width: mobile ? "95%" : "80%" }}>
+      <Text component="h2"  color="#22b8cf" align={mobile ? "center" : "left"} size={mobile ? "13vw" : "4rem"} weight={700} >
         V čem pracuji
       </Text>
       <Grid>
         {tools.map(({ label, sub}) => {
           return (
-            <Grid.Col span={3}>
-              <Text size={"1.5vw"} sx={{marginBottom: "1vh"}}>{label}</Text>
+            <Grid.Col span={mobile ? 6 : 3}>
+              <Text component="h3"  align={mobile ? "center" : "left"} size={mobile ? "5vw" : "1.5vw"} weight={600} color={theme.colors.blue[8]} sx={{marginBottom: "1vh"}}>{label}</Text>
               <List size="xl" withPadding>
                 {sub.map((item) => {
-                  return <List.Item icon={  <ThemeIcon color={item.img ? "#22b8cf" : "white"} size={24} radius="xl">{item.img}</ThemeIcon>}>{item.i ? <Mark sx={{borderRadius: "3px", padding: "1px 3px"}}>{item.label}</Mark>: item.label}</List.Item>;
+                  return <List.Item icon={  <ThemeIcon color={item.img ? theme.colors.blue[7] : "white"} size={24} radius="xl">{item.img}</ThemeIcon>}>{item.i ? <Mark sx={{borderRadius: "3px", padding: "1px 3px"}}>{item.label}</Mark>: item.label}</List.Item>;
                 })}
               </List>
             </Grid.Col>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createStyles, Text } from '@mantine/core';
-import { useWindowScroll } from "@mantine/hooks";
+import { useViewportSize, useWindowScroll } from "@mantine/hooks";
 import { useScroll} from 'react-use';
 
 const useStyles = createStyles((theme) => ({
@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
     overflow: 'visible',
     backgroundImage: "url(/images/gradient.webp)",
     width: '100%',
-    margin: "5vh 0 0 0"
+  
   },
   textSizeDisplayLeft: {
     objectFit: 'fill',
@@ -31,7 +31,7 @@ const useStyles = createStyles((theme) => ({
     overflow: 'hidden',
     fontWeight: 800,
     fontFamily: "degular-display,sans-serif",
-    textAlign: 'left',
+  
   },
 }));
 
@@ -40,17 +40,19 @@ const FirstScreen = ({ children }) => {
   const [scroll, scrollTo] = useWindowScroll();
   const { y } = scroll;
   const [translateX, setTranslateX] = useState(0);
+  const { height, width } = useViewportSize();
+  let mobile = width < 768 ? true : false;
 
   useEffect(() => {
-    setTranslateX(-y * 1.5);
+    setTranslateX(mobile ? -y * 0.5 : -y * 1.5);
   }, [y]);
 
   return (
     <div
       className={classes.gradientHeadingWrapper}
-      style={{ transform: `translateX(${translateX}px)` }}
+      style={{ transform: `translateX(${translateX}px)`, marginTop: mobile ? "12vh" : "0vh" }}
     >
-      <Text className={classes.textSizeDisplayLeft} component="div">
+      <Text className={classes.textSizeDisplayLeft} component="div" sx={{  textAlign: mobile ? "center" : "left",}}>
         {children}
       </Text>
     </div>

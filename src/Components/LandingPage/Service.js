@@ -8,7 +8,10 @@ import Prototyping from "../../../public/images/prototyping.png";
 import Blockchainari from "../../../public/images/blockchainari.png";
 import { MdArrowForward } from "react-icons/md";
 import { useReducer, useState } from "react";
+import { useViewportSize } from "@mantine/hooks";
 export default function Services() {
+  const { height, width } = useViewportSize();
+  let mobile = width < 768 ? true : false;
   let services = [
     {
       key: 1,
@@ -57,17 +60,17 @@ export default function Services() {
   const [currentHover, setCurrentHover] = useReducer(stateReducer,  "Vyvíjíme ...");
   const router = useRouter();
   return (
-    <div style={{ width: "80%", minHeight: "50vh", padding: "8vh 0 11vh 0" }}>
-    <Text color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{  marginBottom: "3rem",  transition: "all 0.3s ease-in-out", }}>
-  {currentHover}
-</Text>
+    <div style={{ width: mobile ? "100%" : "80%", minHeight: "50vh", padding: mobile ? "2vh 5vw" : "8vh 0 11vh 0" }}>
+     <Text component="h2" color="#22b8cf" align="center" size={mobile ? "12vw" : "4vw"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
+     {currentHover}
+            </Text>
       <Grid sx={{ width: "100%" }}>
         {services.map((service) => {
           let { image, name, description, href, key } = service;
           return (
             <Grid.Col
   className="service-title"
-  span={3}
+  span={mobile ? 6 : 3}
   sx={{ textAlign: "center", borderRadius: "3px", cursor: "pointer" }}
   onMouseEnter={() => setCurrentHover({ payload: key })}
   onMouseLeave={() => setCurrentHover({ payload: null })}
@@ -106,7 +109,7 @@ export default function Services() {
 </div>
 
                 <Text
-                  size="1.5vw"
+                  size={mobile ? "5vw" :"1.5vw"}
                   component="a"
                   weight={600}
                   color="#808080"

@@ -3,6 +3,7 @@ import { Text, createStyles } from "@mantine/core";
 import Polystyrensypany from "../../../public/images/polystyrensypany.png"; // "../../../public"
 import Image from "next/image";
 import Link from "next/link";
+import { useViewportSize } from "@mantine/hooks";
 let projects = [
   { name: "Polystyren sypaný", year: "2022", img: Polystyrensypany, video: "", href: "/portfolio/polystyrensypany" },
   { name: "Desktop aplikace pro tetovací studio", year: "2023", img: "", video: "", href: "/portfolio/" },
@@ -43,9 +44,10 @@ function HoverCard({ project, mouseX, mouseY }) {
 }
 
 export default function OurProjects() {
+  const { height, width } = useViewportSize();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-
+let mobile = width < 768 ? true : false;
   const handleMouseMove = (e) => {
     setMousePosition({ x: e.clientX + 10, y: e.clientY + 10 });
   };
@@ -69,8 +71,8 @@ export default function OurProjects() {
    const {classes} = useStyles();
 
   return (
-    <div style={{ margin: "3vh 0", }}>
-              <Text component="h2" color="#22b8cf" align="center" size={"4rem"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
+    <div style={{ margin: "3vh 0", maxWidth: "100%", padding: mobile ? "0 5vw" : "0" }}>
+              <Text component="h2" color="#22b8cf" align="center" size={mobile ? "15vw" : "4vw"} weight={700} sx={{   transition: "all 0.3s ease-in-out", marginBottom: "3vh" }}>
             Mé projekty
             </Text>
            <div style={{width: "100%", minWidth: "70vw", }}>
@@ -88,12 +90,14 @@ export default function OurProjects() {
                 borderTop: index === 0 ? "3px solid #333" : "",
                 borderBottom: "3px solid #333",
                 gap: "2vw",
+                alignItems: "center",
+                textAlign: mobile ? "center !important" : "flex-start !important",
               }}
             >
-               <Text component="h3" color="#333" align="left" size={"2.5rem"} weight={500} sx={{   transition: "all 0.3s ease-in-out",  padding: "2vh 0"}}>
+               <Text component="h3" color="#333" align={mobile ? "center" : "left"} size={mobile ? "8vw" : "1.5vw"} weight={500} sx={{   transition: "all 0.3s ease-in-out",  padding: "2vh 0"}}>
             {project.year}
             </Text>
-    <Text component="h3" color="#333" align="left" size={"2.5rem"} weight={500} sx={{   transition: "all 0.3s ease-in-out", width: "100%", padding: "2vh 0"}}>
+    <Text component="h3" color="#333" align={mobile ? "center" : "left"} size={mobile ? "6vw" : "2vw"} weight={500} sx={{   transition: "all 0.3s ease-in-out", width: "100%", padding: "2vh 0"}}>
             {project.name}
             </Text>
             </Link>
@@ -114,7 +118,7 @@ export default function OurProjects() {
             >
              
          
-    <Text component="h3" color="#333" align="center" size={"2.5rem"} weight={500} sx={{   transition: "all 0.3s ease-in-out", width: "100%", padding: "2vh 0"}}>
+    <Text component="p" color="#333" align="center" size={mobile ? "8vw" : "2vw"} weight={500} sx={{   transition: "all 0.3s ease-in-out", width: "100%", padding: "2vh 0"}}>
             Zjistit více
             </Text>
             </Link>

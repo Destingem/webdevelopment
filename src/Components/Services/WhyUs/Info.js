@@ -108,7 +108,7 @@ const CodeSnippet = () => {
  console.log(info);
 
   return (
-    <div style={{maxWidth: "30%", marginLeft: "auto", whiteSpace: "break-spaces !important"}}>
+    <div style={{maxWidth: "30%", margin: " 0 auto", whiteSpace: "break-spaces !important"}}>
       <SyntaxHighlighter language="javascript" style={{...solarizedDark}}>
       {codeString}
     </SyntaxHighlighter>

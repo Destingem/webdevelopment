@@ -10,10 +10,10 @@ import {
   Button,
 } from "@mantine/core";
 import Link from "next/link";
-import { useWindowScroll } from "@mantine/hooks";
+import { useViewportSize, useWindowScroll } from "@mantine/hooks";
 import Image from "next/image";
 import Logo from "../../../public/images/logo.png";
-
+import NavBarMobile from "./MobileNavbar";
 
 export default function Navbar({motion}) {
   const links = [
@@ -25,6 +25,8 @@ export default function Navbar({motion}) {
   ];
   var theme = useMantineTheme();
   const [scroll, scrollTo] = useWindowScroll();
+  const { height, width } = useViewportSize();
+  let mobile = width < 768 ? true : false;
   const useStyles = createStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -97,7 +99,8 @@ export default function Navbar({motion}) {
   }));
 
   const { classes } = useStyles();
- 
+ if(mobile) return (
+  <NavBarMobile />)
   return (
     <div className={classes.wrapper}>
       <Paper

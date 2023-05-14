@@ -7,23 +7,23 @@ const reviews = [
     {name: "Petr Špaček", job: "podnikatel"}
 ]
 
-export default function Reference(){
+export default function Reference({mobile}){
 
-    function ReferenceSlide({name, job, org, text, web, href}){
+    function ReferenceSlide({name, job, org, text, web, href, mobile}){
         const theme = useMantineTheme()
         return(
             <Carousel.Slide>
             <Blockquote color='cyan' cite={<div><Text size={"xl"}>{name + ", " + job}</Text> <Text>{org}</Text> {href ? <Link href={href}><Text color='cyan' size={"xl"}>{web}</Text></Link> : <Text color='cyan' size={"xl"}>{web}</Text>}</div>}>
-                <Text color={theme.colors.cyan[8]} size={"2vw"}>{text}</Text>
+                <Text component="p"  color={theme.colors.cyan[8]} size={mobile ? "xl": "2vw"}>{text}</Text>
             </Blockquote>
             </Carousel.Slide>
         )
     }
 
     return(
-        <Carousel sx={{maxWidth: "90%"}} slideSize="70%" height="30vh" slideGap="xl" loop withIndicators>
+        <Carousel sx={{maxWidth: "100%"}} slideSize={mobile ? "90%" : "70%"} height="30vh" slideGap="xl" loop withIndicators>
             {reviews.map((review) => {
-                return <ReferenceSlide {...review} />
+                return <ReferenceSlide {...review} mobile={mobile}/>
             })}
         </Carousel>
     )

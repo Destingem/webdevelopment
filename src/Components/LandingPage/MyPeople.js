@@ -8,7 +8,7 @@ import { useWindowScroll } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import OutlineText from "../UI/OutlinedText";
 
-export default function MyPeople({we}) {
+export default function MyPeople({we, mobile}) {
     const gridVariants = {
         hidden: { opacity: 0, x: -100 },
         visible: { opacity: 1, x: 0, transition: { duration: 5, type: 'spring', stiffness: 50 } },
@@ -49,8 +49,8 @@ export default function MyPeople({we}) {
     
 
        <Card sx={{backgroundColor: "rgb(248, 249, 249, 0.8)", zIndex: "300", padding: " 0 2vw 2vh 2vw !important",}}>
-       <Text weight={700} align="center" component="h3" color="#22b8cf" size={"2rem"} sx={{margin: "2vh 0", }}>S kým spolupracuji</Text>
-       <SimpleGrid cols={we.length}>
+       <Text component="h2" weight={700} align="center"  color="#22b8cf" size={"2rem"} sx={{margin: "2vh 0", }}>S kým spolupracuji</Text>
+       <SimpleGrid cols={mobile ? 1 : we.length}>
           {we.map((item) => {
             const {name, job, description, button, image} = item;
             return (
@@ -61,7 +61,7 @@ export default function MyPeople({we}) {
     <Image
       src={image}
       width={"100%"}
-      height={200}
+      height={mobile ? 200 : 200}
       alt="Your photo"
       style={{objectFit: "cover", width: "100%"}}
       
@@ -72,16 +72,16 @@ export default function MyPeople({we}) {
     position="apart"
     sx={{ marginTop: "1vh", padding: "0 1vw" }}
   >
-    <Text size="xl" weight="bold" color="#4d4d4d">
+    <Text component="h3" size="xl" weight="bold" color="#4d4d4d">
       {name}
     </Text>
-    <Text size="md" weight="bold" color="#4d4d4d">
+    <Text component="h3" size="md" weight="bold" color="#4d4d4d">
       {job}
     </Text>
   </Group>
   <Card.Section>
-    <Blockquote color="cyan" sx={{ maxWidth: "20vw" }}>
-      <Text size={"sm"}>{description}</Text>
+    <Blockquote color="cyan" sx={{ maxWidth: "20vw", minWidth: mobile ? "90vw" : "", width: "100%" }}>
+      <Text component="p" size={"sm"}>{description}</Text>
     </Blockquote>
   </Card.Section>
   <Card.Section

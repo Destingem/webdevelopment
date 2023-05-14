@@ -70,22 +70,23 @@ let features = [
         
         "Upravitelnost svépomocí",
         "Cena",*/
-export default function DesktopAplikace() {
+export default function DesktopAplikace({mobile}) {
   const theme = useMantineTheme();
   return (
     <>
-      <div style={{ display: "flex", gap: "2vw" }}>
+      <div style={{ display: "flex", gap: "2vw", flexDirection: mobile ? "column" : "row" }}>
         <div
-          style={{
+         style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
+            gap: mobile ? "2vh" : "0",
           }}
         >
-          <Text size="2vw" sx={{ borderBottom: "3px solid #22b8cf" }}>
+          <Text size={mobile ? "6vw" :"2vw"} sx={{ borderBottom: "3px solid #22b8cf" }}>
             Předpřipravené weby a aplikace pro rychlé a levné řešení
           </Text>
-          <Text size="1vw">
+          <Text size={mobile ? "4vw" :"1vw"}>
             Ušetřete čas a peníze s naší nabídkou předem navržených šablon pro
             váš web či aplikaci! Naše šablony nabízejí vynikající řešení pro ty,
             kteří hledají rychlé a cenově dostupné alternativy k běžnému vývoji
@@ -100,12 +101,12 @@ export default function DesktopAplikace() {
             úspěchu v online světě.
           </Text>
         </div>
-        <Image src="/images/filebund.svg" sx={{ minWidth: "30%" }} />
+        <Image src="/images/filebund.svg" sx={{ maxWidth: mobile ? "80%" : "30%", margin: mobile ? "2vh auto" : "0" }} />
       </div>
       <Grid>
         {webServices.map((service) => {
           return (
-            <Grid.Col span={4}>
+            <Grid.Col span={mobile ? 12 : 4}>
               <Card
                 shadow="xl"
                 sx={{
@@ -116,105 +117,52 @@ export default function DesktopAplikace() {
                 }}
               >
                 <Card.Section
-                  sx={{
-                    padding: "1vh 2vw",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: theme.colors.cyan[8],
-                  }}
+                 sx={{padding: "1vh 2vw", backgroundColor: theme.colors.cyan[8]}}
                 >
-                  <Text weight={600} align="center" size={"1vw"} color={"#fff"}>
+                  <Text weight={600} align="center" size={mobile ? "5vw" :"1vw"} color={"#fff"}>
                     {service.label}
                   </Text>
                 </Card.Section>
                 <Text
-                  sx={{ maxWidth: "80%", margin: "2vh auto" }}
-                  align="left"
-                  size={"xl"}
+                 sx={{maxWidth: mobile ? "100%" : "80%",  margin:  "2vh auto"}} align="left" size={mobile ? "md" : "xl"}
                 >
                   {service.popis}
                 </Text>
              
-                <Card.Section
-                  sx={{ padding: "2vh 10%", borderTop: "3px solid #22b8cf", marginTop: "auto" }}
-                >
-                  <Text size={"xl"} color="#22b8cf">
-                    Cena
-                  </Text>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div>
-                      <Text weight={700}>Od</Text>
-                      <Group>
-                        <Text weight={600} size={"2vw"}>
-                          {service.cena.od}
-                        </Text>
-                        <Text>Kč</Text>
-                      </Group>
-                      <Text>Malý projekt</Text>
-                    </div>
-                    <Text size={"4vw"}>-</Text>
-                    <div>
-                      <Text weight={700}>Do</Text>
-                      <Group>
-                        {" "}
-                        <Text weight={600} size={"2vw"}>
-                          {service.cena.do}
-                        </Text>
-                        <Text>Kč</Text>
-                      </Group>
-                      <Text>Velký projekt</Text>
-                    </div>
+                <Card.Section sx={{padding: "2vh 10%", borderTop: "3px solid #22b8cf"}}>
+                  <Text size={"xl"} color="#22b8cf">Cena</Text>
+                 <div style={{display: "flex", justifyContent: "space-around", alignItems:"center"}}>
+                 <div>
+                  <Text size={mobile ? "xl" : "md"} weight={700}>Od</Text>
+                  <Text> <Text  component="span" weight={600} size={mobile ? "8vw" : "2vw"}>{service.cena.od}</Text><Text component="span" >Kč</Text></Text>
+                    <Text>Malý projekt</Text>
                   </div>
+                  <Text weight={mobile ? 600 : 400} size={mobile ? "12vw" : "4vw"}>-</Text>
+                  <div style={mobile ? {display: "flex", flexDirection: "column", alignItems: "flex-end"} : {}}>
+                  <Text size={mobile ? "xl" : "md"} weight={700}>Do</Text>
+                  <Text> <Text  component="span" weight={600} size={mobile ? "8vw" : "2vw"}>{service.cena.do}</Text><Text component="span" >Kč</Text></Text>
+                   <Text>Velký projekt</Text>
+                  </div>
+                 </div>
                 </Card.Section>
               </Card>
             </Grid.Col>
           );
         })}
       </Grid>
-      <Card
-        sx={{
-          backgroundColor: theme.colors.cyan[0],
-          padding: "5vh 2vw !important",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundImage: "url('/images/topography.svg') ",
-        }}
-      >
-        <div>
-          {" "}
-          <Text weight={500} component="h3" size={"2vw"}>
-            Začněme s tvorbou vašeho e-shopu hned
-          </Text>
-          <Text sx={{ maxWidth: "70%" }} size={"1vw"}>
-            Začněte svůj úspěch online! Kontaktujte mě ještě dnes a společně
-            vytvoříme eshop, která vás odliší od konkurence a splní nároky a
-            očekávání vaších zákazníků. Nečekejte, získejte profesionální řešení
-            pro váš byznys nyní!
-          </Text>
-        </div>
-        <Link href="/kontakt">
-          <Button
-            sx={{
-              backgroundColor: theme.colors.blue[4] + " !important",
-              ":hover": {
-                backgroundColor: theme.colors.blue[8] + " !important",
-              },
-            }}
-            size="xl"
-            color="blue"
-          >
-            Jdu do toho
-          </Button>
-        </Link>
+    
+      {mobile ?
+      <Card sx={{backgroundColor: theme.colors.cyan[0], padding: "1vh 2vw !important", display: "flex", flexDirection: "column" ,justifyContent: "center", alignItems: "center", backgroundImage: "url('/images/topography.svg') ", gap: "2vh"}}>
+        <Text  sx={{margin: "2vh auto 0 auto", maxWidth: "95%"}} weight={500} component="h3" size={"8vw"}>Hotovo během 72 hodin</Text>
+        <Text   sx={{margin: "0 auto", maxWidth: "95%"}}  size={"4vw"} >Začněte svůj úspěch online! Kontaktujte mě ještě dnes a společně vytvoříme webovou stránku či aplikaci, která vás odliší od konkurence. Nečekejte, získejte profesionální řešení pro váš byznys nyní!</Text>
+<Link href="/kontakt" style={{width: "100%"}}><Button  fullWidth sx={{backgroundColor: theme.colors.blue[4] + " !important", ":hover": {backgroundColor: theme.colors.blue[8] + " !important"}, width: "100%" }} size="md" color="blue">Jdu do toho</Button></Link>
       </Card>
+     :
+        <Card sx={{backgroundColor: theme.colors.cyan[0], padding: "5vh 2vw !important", display: "flex", justifyContent: "space-between", alignItems: "center", backgroundImage: "url('/images/topography.svg') ",}}>
+      <div>  <Text weight={500} component="h3" size={"2vw"}>Nečekejte, můžete mít hotovo během 72 hodin</Text>
+        <Text sx={{maxWidth: "70%"}} size={"1vw"} >Začněte svůj úspěch online! Kontaktujte mě ještě dnes a společně vytvoříme webovou stránku či aplikaci, která vás odliší od konkurence. Nečekejte, získejte profesionální řešení pro váš byznys nyní!</Text></div>
+<Link href="/kontakt"><Button sx={{backgroundColor: theme.colors.blue[4] + " !important", ":hover": {backgroundColor: theme.colors.blue[8] + " !important"}, }} size="xl" color="blue">Jdu do toho</Button></Link>
+      </Card>}
     </>
   );
 }

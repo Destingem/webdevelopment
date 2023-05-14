@@ -10,12 +10,12 @@ const cursorVariants = {
   blink: { opacity: [1, 0, 1], transition: { duration: 0.8, repeat: Infinity } },
 };
 
-const AnimatedHeader = ({ text }) => {
+const AnimatedHeader = ({ text, mobile }) => {
   const firstPartLength = text.split("").slice(0, -6).length;
 
   return (
-    <div style={{ marginLeft: "1vh", position: "relative", zIndex: 150 }}>
-      <Text weight={700} size="5vh" w="70%" color="#212529">
+    <div style={{ marginLeft: mobile ? "" : "1vh", position: "relative", zIndex: 150, display: "flex", flexDirection: "column", gap: "5vh" }}>
+      <Text component="h1" weight={700} size={mobile ? "6vw" : "5vh"} w="95%" color="#212529">
         <motion.h1>
           {text.split("").slice(0, -6).map((char, index) => (
             <motion.span
@@ -31,9 +31,10 @@ const AnimatedHeader = ({ text }) => {
         </motion.h1>
       </Text>
       <Text
+      component="h1" 
         weight={700}
-        size="8vh"
-        w="70%"
+        size={mobile ? "4vh" : "8vh"}
+        w="100%"
         variant="gradient"
         gradient={{ from: "indigo", to: "cyan", deg: 45 }}
         mt={"-5vh"}
@@ -55,6 +56,7 @@ const AnimatedHeader = ({ text }) => {
       <Space h={"2vh"} />
       <motion.span
         style={{
+          marginTop: mobile ? "5vh" : "0vh",
           position: "absolute",
           bottom: "0",
           fontWeight: 700,

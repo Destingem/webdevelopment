@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Container,
@@ -17,15 +18,11 @@ import MeSyntax from "./MeSyntax";
 import { motion } from "framer-motion";
 
 export default function Footer() {
-  
-
-
   const theme = useMantineTheme();
   const useStyles = createStyles((theme) => ({
-    main:{
-      //  background: theme.fn.linearGradient(45, theme.colors.cyan[0], theme.colors.blue[0]),
-    borderRadius: "60px 60px 0 0",
-    backgroundColor: "#232323",
+    main: {
+      borderRadius: "60px 60px 0 0",
+      backgroundColor: "#232323",
       position: "sticky",
       bottom: 0,
       left: 0,
@@ -38,20 +35,25 @@ export default function Footer() {
       paddingTop: "5vh",
       paddingBottom: "5vh",
       marginTop: theme.spacing.xl,
-      
-
-     
     },
     footerText: {
-     
       fontWeight: 500,
-      
       whiteSpace: "nowrap",
     },
-
+    bigScreen: {
+      '@media (max-width: 768px)': {
+        display: 'none',
+      },
+    },
+    smallScreen: {
+      display: 'none',
+      '@media (max-width: 768px)': {
+        display: 'block',
+      },
+    },
   }));
 
-  const {classes }= useStyles();
+  const { classes } = useStyles();
   const renderContent = (delay) => (
     <motion.div
         initial={{ x: "90%" }}
@@ -85,9 +87,9 @@ export default function Footer() {
       </Button>
     </motion.div>
   );
+
   return (
-    <div className={classes.main} >
-     
+    <div className={classes.main}>
       <Container size="90%" className={classes.root}>
       <Paper
         sx={{
@@ -102,14 +104,17 @@ export default function Footer() {
           position: "relative",
         }}
       >
-        {Array.from({ length: 5 }).map((_, index) => {
-          return renderContent(index * 1.5);
-        })}
-      </Paper>
-      <Space h="xl" />
-      <div style={{display: "flex"}}>
-      <div style={{width: "30%", borderRadius: "6px",}}><MeSyntax /></div>
-      <Grid sx={{width: "70%", margin: "0 auto 0 auto", padding: "0 5vw"}}>
+        
+          {Array.from({ length: 5 }).map((_, index) => {
+            return renderContent(index * 1.5);
+          })}
+        </Paper>
+        <Space h="xl" />
+        <div style={{ display: "flex" }}>
+          <div className={`${classes.bigScreen}`} style={{ width: "30%", borderRadius: "6px" }}>
+            <MeSyntax />
+          </div>
+          <Grid className={`${classes.bigScreen}`} sx={{ width: "70%", margin: "0 auto 0 auto", padding: "0 5vw" }}>
           <Grid.Col span={12}>
             <Text  size={"5rem"} sx={{marginBottom: "-5vh"}} className={classes.footerText} color={"#d2d2d2"}>
               608 270 754
@@ -131,11 +136,41 @@ export default function Footer() {
          </Text>
             </Link>
           </Grid.Col>
-        </Grid>
-      </div>
+          </Grid>
+          <Grid className={`${classes.smallScreen}`} sx={{ width: "100%", margin: "0 auto", padding: "0 0vw" }}>
+          <Grid.Col span={12}>
+            <Text align="center"  size={"12vw"} sx={{}} className={classes.footerText} color={"#d2d2d2"}>
+              608 270 754
+             
+            </Text>
+          </Grid.Col>
+          <Grid.Col span={12}>
+            <Text align="center" size={"10vw"} className={classes.footerText}  variant="gradient"  gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}>
+              
+              Ondřej Zaplatílek
+            
+            </Text>
+          </Grid.Col>
+          <Grid.Col span={12}>
+            <Link href="mailto:ondrej@ondrejzaplatilek.eu?subject=Chci si nechat vytvořit web">
+            <Text align="center"  sx={{}} size={"6vw"} className={classes.footerText} color={theme.colors.cyan[9]}>
+           
+           ondrej@ondrejzaplatilek.eu
+         </Text>
+            </Link>
+          </Grid.Col>
+          <Grid.Col span={12}>
+          <MeSyntax />
+          </Grid.Col>
+          </Grid>
+          
+        </div>
       </Container>
-      
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}><Text weight={500} color="#e9e9e9 " component="p">Ondřej Zaplatílek 2023</Text></div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Text weight={500} color="#e9e9e9 " component="p">
+          Ondřej Zaplatílek 2023
+        </Text>
       </div>
+    </div>
   );
 }

@@ -3,9 +3,12 @@ import type { AppProps } from 'next/app'
 import UIWrapper from '../Components/UI/UIWrapper'
 import { MantineProvider } from '@mantine/core'
 import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
+import { DefaultSeo } from 'next-seo';
 export default function App({ Component, pageProps }: AppProps) {
   return <>
+  
   <MantineProvider withGlobalStyles withNormalizeCSS>
+    
   <UIWrapper>
   <FpjsProvider
     loadOptions={{
@@ -13,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
       region: "eu"
     }}
   >
-    <Component {...pageProps} />
+   
+   <Component {...pageProps} />
+ 
     </FpjsProvider>
   </UIWrapper>
   </MantineProvider>

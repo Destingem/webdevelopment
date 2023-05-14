@@ -70,11 +70,11 @@ export default function CTA() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.body}>
-        <Title className={classes.title}>Od vašich stránek už vás dělí jen jeden krok</Title>
+        <Title component="h2" className={classes.title}>Od vašich stránek už vás dělí jen jeden krok</Title>
         <Text fw={500} fz="lg" mb={5}>
           Pokud zvažujete mé služby, stačí jen vložit váš email a já se vám ozvu.
         </Text>
-        <Text fz="sm" c="dimmed">
+        <Text component="h3" fz="sm" c="dimmed">
           Během 48 hodin vám odpovím a domluvíme se na dalším postupu. Pokud si ještě nejste jisti, můžete se podívat na můj <Link href={"/o-me"}>
         &nbsp;
            <Text component='span' weight={600} color='blue'>Životopis</Text></Link> 
