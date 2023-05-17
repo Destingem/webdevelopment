@@ -52,7 +52,7 @@ export function FAQ({mobile}) {
 
         <Accordion.Item className={classes.item} value="another-account">
           <Accordion.Control>
-            Jaký je rozdíl mezi React a Next.js?
+            Jak se liší React a Next.js?
           </Accordion.Control>
           <Accordion.Panel>
             React je JavaScriptová knihovna pro vytváření uživatelských
